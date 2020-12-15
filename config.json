@@ -1,0 +1,63 @@
+{
+    "BOT_SETTINGS":
+    {
+
+        "BOT_TOKEN": "Nzg2Mjc1MzQ3ODI5ODgyODgx.X9EB-w.QjmWqkGelOcj7BkbVDqTspy6x8U",
+        "MONGODB_URL": "mongodb+srv://dawnbot:hqmMSdmIcTj7YYcP@dawn-bot.ptwun.mongodb.net/Dawn-Bot?retryWrites=true&w=majority",
+        "GUILD_ID": "772966508581748786",
+        "EMBED_COLOR": "#FF55FF",
+        "EMBED_AUTHOR": "Coded by Ronski | Dawn Realms",
+        "PREFIX": "-"
+    },
+
+    "CHANNELS":
+    {
+
+        "WELCOME_LEAVE": "772975385931415563",
+        "INFORMATION": "772978014090035250",
+        "BOT_COMMANDS": "772996982381477899",
+        "REACTION_ROLES": "772978868969275392",
+
+        "SUGGESTIONS_CREATE": "772982839725654037",
+        "SUGGESTIONS_ACCEPT": "772983739588018200",
+        "SUGGESTIONS_DENIED": "772983739588018200",
+
+        "SERVERSTATS_ALL": "772975110843269170",
+        "SERVERSTATS_HUMANS": "772975204888608808",
+        "SERVERSTATS_ROBOTS": "772975145127510047"
+    },
+
+    "ROLES": {
+        "JOIN_RANK": "772973727159549953"
+    },
+
+    "PERMISSIONS":
+    {
+
+        "ADMINISTRATOR":
+        [
+            "772966749830119474",
+            "772966996841070640",
+            "772967226268581908",
+            "772967228261924945",
+            "772967453226958869"
+        ],
+
+        "MODERATOR":
+        [
+            "772966749830119474",
+            "772966996841070640",
+            "772967226268581908",
+            "772967228261924945",
+            "772967453226958869",
+            "772967454249844747",
+            "772967461929615382",
+            "772967470407483392"
+        ]
+    },
+    
+    "MESSAGES":
+    {
+        "NO_PERMISSION": "You don't have access to this command!"
+    }
+}

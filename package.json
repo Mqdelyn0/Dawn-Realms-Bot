@@ -1,0 +1,17 @@
+{
+  "name": "dawn-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot that kashike_ made for Dawn Realms.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "author": "kashike_",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "log4js": "^6.3.0",
+    "mongoose": "^5.11.5",
+    "nodemon": "^2.0.6"
+  }
+}
