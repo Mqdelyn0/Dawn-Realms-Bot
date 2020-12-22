@@ -22,11 +22,8 @@ module.exports = {
             let category = arguments[0];
             let commands_list = [];
             commands.forEach(command => {
-                let command_category = command.category;
-                let command_name = command.name;
-                let command_description = command.information;
-                let combined_command = `-${command_name} | *${command_description}*`;
-                if(!commands_list.includes(combined_command) && category === command_category) {
+                let combined_command = `-${command.name} | *${command.information}*`;
+                if(!commands_list.includes(combined_command) && category === command.category) {
                     commands_list.push(combined_command);
                 }
             });

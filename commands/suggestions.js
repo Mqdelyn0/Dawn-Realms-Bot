@@ -30,11 +30,10 @@ module.exports = {
                 let author = client.users.cache.get(suggestion_model.author_id);
                 let channel;
                 if(!reason) reason = "No Reason";
-                if(arguments[1] = "accept") { 
+                if(arguments[0] = "accept") { 
                     result = "Accepted";
                     channel = client.channels.cache.get(config.CHANNELS.SUGGESTIONS_ACCEPT);
-                } 
-                if(arguments[1] = "deny") { 
+                } if(arguments[0] = "deny") { 
                     result = "Denied";
                     channel = client.channels.cache.get(config.CHANNELS.SUGGESTIONS_DENIED);
                 }
