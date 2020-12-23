@@ -7,11 +7,11 @@ const logger = require('../library/logger');
 module.exports = {
     run: async(client, message, arguments) => {
         if(arguments.length === 0) {
-                let message_embed = new Discord.MessageEmbed()
-                    .setTitle(`**Help Menu** (Reaction Roles)`)
-                    .setDescription(`-reactionrole create (Role ID) (Description)\n-reactionrole delete (Message ID)`)
-                    .setColor(config.BOT_SETTINGS.EMBED_COLOR)
-                    .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
+            let message_embed = new Discord.MessageEmbed()
+                .setTitle(`**Help Menu** (Reaction Roles)`)
+                .setDescription(`-reactionrole create (Role ID) (Description)\n-reactionrole delete (Message ID)`)
+                .setColor(config.BOT_SETTINGS.EMBED_COLOR)
+                .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
             return message.channel.send(message_embed);
         } else if(arguments.length !== 0) {
             if(permission.has_admin(client, message.author.id) === false) {
