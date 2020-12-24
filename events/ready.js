@@ -13,10 +13,10 @@ module.exports = async(client) => {
 
 function refreshLinking(client, guild) {
     guild.members.cache.forEach(async(member) => {
-        let role;
         let linking_roles = config.ROLES.LINKING;
         let linking_model = await LinkingModel.findOne({ discord_id: member.id });
         if(linking_model) {
+            member.setNickname(`${linking_model.player_name} | ${linking_model.player_rank}`);
             if(linking_model.is_verified === false) return;
             linking_roles.forEach(role_id => {
                 let role = guild.roles.cache.get(role_id);
@@ -24,8 +24,6 @@ function refreshLinking(client, guild) {
                     if(linking_model.player_rank !== role.name) {
                         logger.info(`Removed ${role.name} from ${member.user.tag}!`);
                         member.roles.remove(role);
-                    } else if(linking_model.player_rank === role.name) {
-                        member.setNickname(`${linking_model.player_name}`);
                     }
                 }
             });
@@ -36,7 +34,7 @@ function refreshLinking(client, guild) {
             }
             let role_needed = guild.roles.cache.filter(check_role => check_role.name === linking_model.player_rank).first();
             let role_player = guild.roles.cache.get(role_needed.id);
-            if(!member.roles.cache.has(role_player.id)) {
+            if(!member.roles.cache.has(role_player)) {
                 member.roles.add(role_player);
                 logger.info(`Added ${role_player.name} to ${member.user.tag} as they linked their account!`);
             }
