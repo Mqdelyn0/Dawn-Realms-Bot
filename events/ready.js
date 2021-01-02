@@ -39,7 +39,7 @@ function refreshLinking(client, guild) {
                 member.roles.add(role_needed);
                 logger.info(`Added ${role_needed.name} to ${member.user.tag} as they linked their account!`);
             }
-        } else {
+        } else if(!linking_model) {
             let role = guild.roles.cache.get(config.ROLES.LINKED);
             if(member.roles.cache.has(role.id)) {
                 member.roles.remove(role);
