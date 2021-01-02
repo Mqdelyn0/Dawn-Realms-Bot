@@ -25,15 +25,15 @@ module.exports = {
             }
             let suggestion_model = await SuggestionModel.findOne({ message_id: arguments[1] });
             if(suggestion_model) {
-                let result;
+                let result = "NULL";
                 let reason = arguments.slice(2).join(' ');
                 let author = client.users.cache.get(suggestion_model.author_id);
                 let channel;
                 if(!reason) reason = "No Reason";
-                if(arguments[0] = "accept") { 
+                if(arguments[0] === "accept") { 
                     result = "Accepted";
                     channel = client.channels.cache.get(config.CHANNELS.SUGGESTIONS_ACCEPT);
-                } if(arguments[0] = "deny") { 
+                } else if(arguments[0] === "deny") { 
                     result = "Denied";
                     channel = client.channels.cache.get(config.CHANNELS.SUGGESTIONS_DENIED);
                 }
@@ -43,7 +43,7 @@ module.exports = {
                     .setColor(config.BOT_SETTINGS.EMBED_COLOR)
                     .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
                 channel.send(message_embed);
-                suggestion_model.deleteOne({ message_id: arguments[2] }, (error) => {
+                suggestion_model.deleteOne({ message_id: arguments[1] }, (error) => {
                     if(error) {
                         logger.error(`There was a error deleting suggestion ${arguments[1]} from MongoDB!\n\n${error}`);
                     } else {

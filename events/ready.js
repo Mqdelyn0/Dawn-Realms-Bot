@@ -27,19 +27,19 @@ function refreshLinking(client, guild) {
                     }
                 }
             });
-            let role_linked = guild.roles.cache.get(config.ROLES.LINKED);
-            if(!member.roles.cache.has(role_linked.id)) {
+            let role_needed;
+            let role_linked = guild.roles.cache.filter(check_role => check_role.id ===config.ROLES.LINKED).first();
+            if(!member.roles.cache.has(role_linked)) {
                 member.roles.add(role_linked);
                 logger.info(`Added ${role_linked.name} to ${member.user.tag} as they linked their account!`);
             }
-            let role_needed = guild.roles.cache.filter(check_role => check_role.name === linking_model.player_rank).first();
-            let role_player = guild.roles.cache.get(role_needed.id);
-            if(!member.roles.cache.has(role_player)) {
-                member.roles.add(role_player);
-                logger.info(`Added ${role_player.name} to ${member.user.tag} as they linked their account!`);
+            role_needed = guild.roles.cache.filter(check_role => check_role.name === linking_model.player_rank).first();
+            if(!role_needed) role_needed = guild.roles.cache.filter(check_role => check_role.name === "No Rank").first()
+            if(!member.roles.cache.has(role_needed)) {
+                member.roles.add(role_needed);
+                logger.info(`Added ${role_needed.name} to ${member.user.tag} as they linked their account!`);
             }
         } else {
-        /*
             let role = guild.roles.cache.get(config.ROLES.LINKED);
             if(member.roles.cache.has(role.id)) {
                 member.roles.remove(role);
@@ -48,12 +48,11 @@ function refreshLinking(client, guild) {
 
             linking_roles.forEach(role_id => {
                 let role = guild.roles.cache.get(role_id);
-                if(member.roles.cache.has(role.id)) {
+                if(member.roles.cache.has(role)) {
                     logger.info(`Removed ${role.name} from ${member.user.tag} as they unlinked their account!`);
                     member.roles.remove(role);
                 }
             }); 
-        */
         }
     });
 }
