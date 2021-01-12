@@ -9,7 +9,7 @@ module.exports = {
     run: async(client, message, arguments) => {
         if(arguments.length === 0) {
             let message_embed = new Discord.MessageEmbed()
-                .setTitle(`**Help Menu** (Account Lining)`)
+                .setTitle(`**Help Menu** (Account Linking)`)
                 .setDescription(`-linking (Code)\n-linking unlink\n-linking info`)
                 .setColor(config.BOT_SETTINGS.EMBED_COLOR)
                 .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
@@ -20,7 +20,7 @@ module.exports = {
                 if(linking_model) {
                     if(linking_model.linking_needs_confirmation === true || linking_model.is_linked === true) {
                         let message_embed = new Discord.MessageEmbed()
-                            .setTitle(`**Error** (Account Lining)`)
+                            .setTitle(`**Error** (Account Linking)`)
                             .setDescription(`Your account needs confirmation or is already linked! If you're linking, Do \`/link confirm\` ingame to finish!`)
                             .setColor(config.BOT_SETTINGS.EMBED_COLOR)
                             .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
@@ -31,7 +31,7 @@ module.exports = {
                                 return logger.error(`There was a error updating a Linking model for ${message.author.tag}!\n\nError: ${error}`);
                             } else if(!error) {
                                 let message_embed = new Discord.MessageEmbed()
-                                    .setTitle(`**Account Lining** (Confirmation)`)
+                                    .setTitle(`**Account Linking** (Confirmation)`)
                                     .setDescription(`Please do \`/link confirm\` ingame to finish! You have 5 minutes to do this.`)
                                     .setColor(config.BOT_SETTINGS.EMBED_COLOR)
                                     .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
@@ -41,7 +41,7 @@ module.exports = {
                     } 
                 } else if(!linking_model) {
                     let message_embed = new Discord.MessageEmbed()
-                        .setTitle(`**Error** (Account Lining)`)
+                        .setTitle(`**Error** (Account Linking)`)
                         .setDescription(`That isn't a valid command / code!`)
                         .setColor(config.BOT_SETTINGS.EMBED_COLOR)
                         .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);

@@ -13,6 +13,9 @@ module.exports = async(client) => {
 
 function refreshLinking(client, guild) {
     guild.members.cache.forEach(async(member) => {
+        if(member.id === 786275347829882881) {
+            member.setNickname("[-] Dawn Realms");
+        }
         let linking_roles = config.ROLES.LINKING;
         let linking_model = await LinkingModel.findOne({ discord_id: member.id });
         if(linking_model) {

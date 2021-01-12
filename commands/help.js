@@ -14,7 +14,7 @@ module.exports = {
             });
             let message_embed = new Discord.MessageEmbed()
                 .setTitle("**Help Menu** (Categories)")
-                .setDescription(`Here's a list of all my categories! Do \`-help (Category)\`\n\n${categories.join('\n')}\n`)
+                .setDescription(`Here's a list of all my categories! Do \`-help (Category), CASE SENSITIVE!\`\n\n${categories.join('\n')}\n`)
                 .setColor(config.BOT_SETTINGS.EMBED_COLOR)
                 .setFooter(config.BOT_SETTINGS.EMBED_AUTHOR);
             message.channel.send(message_embed);
