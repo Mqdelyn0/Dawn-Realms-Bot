@@ -31,16 +31,17 @@ function refreshLinking(client, guild) {
                 }
             });
             let role_needed;
-            let role_linked = guild.roles.cache.filter(check_role => check_role.id ===config.ROLES.LINKED).first();
-            if(!member.roles.cache.has(role_linked)) {
+            let role_linked = guild.roles.cache.find(check_role => check_role.id ===config.ROLES.LINKED);
+            if(!member.roles.cache.has(role_linked.id)) {
                 member.roles.add(role_linked);
                 logger.info(`Added ${role_linked.name} to ${member.user.tag} as they linked their account!`);
             }
-            role_needed = guild.roles.cache.filter(check_role => check_role.name === linking_model.player_rank).first();
-            if(!role_needed) role_needed = guild.roles.cache.filter(check_role => check_role.name === "No Rank").first()
-            if(!member.roles.cache.has(role_needed)) {
-                member.roles.add(role_needed);
-                logger.info(`Added ${role_needed.name} to ${member.user.tag} as they linked their account!`);
+            role_needed = guild.roles.cache.find(check_role => check_role.name === linking_model.player_rank);
+            if(role_needed) {
+                if(!member.roles.cache.has(role_needed.id)) {
+                    member.roles.add(role_needed);
+                    logger.info(`Added ${role_needed.name} to ${member.user.tag} as they linked their account!`);
+                }
             }
         } else if(!linking_model) {
             let role = guild.roles.cache.get(config.ROLES.LINKED);
